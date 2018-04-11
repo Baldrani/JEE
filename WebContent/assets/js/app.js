@@ -1,1 +1,1 @@
-//alert('Je m\'ouvre à chaque fois et c\'est très chiant')
+alert('Je m\'ouvre à chaque fois et c\'est très chiant')

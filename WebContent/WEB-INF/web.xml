@@ -45,4 +45,34 @@
 	    <error-code>404</error-code>
 	    <location>/error</location>
 	</error-page>
+	
+	<env-entry>
+	    <env-entry-name>BDD-HOST</env-entry-name>
+	    <env-entry-type>java.lang.String</env-entry-type>
+	    <env-entry-value>localhost</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+	    <env-entry-name>BDD-PORT</env-entry-name>
+	    <env-entry-type>java.lang.String</env-entry-type>
+	    <env-entry-value>1234</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+	    <env-entry-name>BDD-NAME</env-entry-name>
+	    <env-entry-type>java.lang.String</env-entry-type>
+	    <env-entry-value>javabase</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+	    <env-entry-name>BDD-USER</env-entry-name>
+	    <env-entry-type>java.lang.String</env-entry-type>
+	    <env-entry-value>root</env-entry-value>
+	</env-entry>
+	
+	<env-entry>
+	    <env-entry-name>BDD-PWD</env-entry-name>
+	    <env-entry-type>java.lang.String</env-entry-type>
+	    <env-entry-value>secret</env-entry-value>
+	</env-entry>
 </web-app>

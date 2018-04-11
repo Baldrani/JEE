@@ -1,5 +1,8 @@
 package com.sdzee.servlets;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +17,8 @@ public class Login extends HttpServlet {
     public static final String VUE = "/WEB-INF/login.jsp";
     public static final String CHAMP_NAME = "name";
     public static final String CHAMP_PASS = "password";
-
+    
+    
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		HttpSession session = request.getSession();
     	if(session.getAttribute("name") != null) {
@@ -30,6 +34,33 @@ public class Login extends HttpServlet {
     
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
     	
+        String DBHOST = null;
+        String DBPORT = null;
+        String DBNAME = null;
+        String DBUSER = null;
+        String DBPWD = null;
+    	
+    	Context env;
+		try {
+			env = (Context)new InitialContext().lookup("java:comp/env");
+			try {
+		        DBHOST = (String)env.lookup("BDD-HOST");
+		        DBPORT = (String)env.lookup("BDD-PORT");
+		        DBNAME = (String)env.lookup("BDD-NAME");
+		        DBUSER = (String)env.lookup("BDD-USER");
+		        DBPWD = (String)env.lookup("BDD-PWD");
+			} catch (NamingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    	
+		} catch (NamingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	System.out.println();
+    	
 		HttpSession session = request.getSession();
 		
         String name = request.getParameter( CHAMP_NAME );
@@ -37,9 +68,10 @@ public class Login extends HttpServlet {
         
 		Connection connection = null;
 		
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:1234/javabase", "root", "secret");
+			connection = DriverManager.getConnection("jdbc:mysql://"+DBHOST+":"+DBPORT+"/"+DBNAME+"", DBUSER, DBPWD);
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
