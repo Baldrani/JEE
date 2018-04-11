@@ -20,7 +20,7 @@
 			                <input type="password" id="password" name="password" value="" size="20" maxlength="60" class="form-control"/>
 			                <br />
 			
-			                <input type="submit" value="Inscription" class="btn btn-primary"/>
+			                <input type="submit" value="Connexion" class="btn btn-primary"/>
 			                <br />
     					</div>
 			        </form>
